@@ -1,8 +1,11 @@
 import vk
 import time
+<<<<<<< HEAD
 import datetime
 import json
 import random
+=======
+>>>>>>> master
 
 access_token = '73eaea320bdc0d3299faa475c196cfea1c4df9da4c6d291633f9fe8f83c08c4de2a3abf89fbc3ed8a44e1'
 v = '5.103'
@@ -22,13 +25,21 @@ def get_user(id):
 def get_users():
     users_id = []
     for i in range(10):
+<<<<<<< HEAD
         users_id.append(random.randrange(1, 169989152))
     users_id.append('91098303')
+=======
+        users_id.append(i+1)
+>>>>>>> master
 
     users_list = []
     for user_id in users_id:
         user = api.users.get(user_ids = user_id, fields = 'bdate,sex,city,interests')
+<<<<<<< HEAD
         if 'deactivated' not in user[0]: # не берем пользователя если он удален
+=======
+        if user[0]['first_name'] != 'DELETED': # не берем пользователя если он удален
+>>>>>>> master
             if user[0]['is_closed'] == False: # не берем если у пользователя закрыта страница
                 groups = api.users.getSubscriptions(user_id=user_id, extended=1)
                 for i in user:
@@ -37,6 +48,7 @@ def get_users():
                 time.sleep(3)
     return users_list
 
+<<<<<<< HEAD
 def get_couple(): # ищем пару по критериям
     user = get_user('169989152')
     users = get_users()
@@ -61,3 +73,8 @@ with open('couple.json', encoding = 'utf-8-sig' ) as file:
      data = json.load(file)
 for user in data:
     print(user[0])
+=======
+
+# print(get_user('169989152'))
+# print(get_users())
+>>>>>>> master
