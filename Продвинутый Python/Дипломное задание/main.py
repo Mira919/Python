@@ -3,7 +3,10 @@ import time
 import datetime
 import json
 import random
+<<<<<<< HEAD
 from pymongo import MongoClient
+=======
+>>>>>>> master
 
 access_token = '73eaea320bdc0d3299faa475c196cfea1c4df9da4c6d291633f9fe8f83c08c4de2a3abf89fbc3ed8a44e1'
 v = '5.103'
@@ -29,13 +32,20 @@ def get_users():
     users_list = []
     for user_id in users_id:
         user = api.users.get(user_ids = user_id, fields = 'bdate,sex,city,interests')
+<<<<<<< HEAD
         time.sleep(3)
+=======
+>>>>>>> master
         if 'deactivated' not in user[0]: # не берем пользователя если он удален
             if user[0]['is_closed'] == False: # не берем если у пользователя закрыта страница
                 groups = api.users.getSubscriptions(user_id=user_id, extended=1)
                 for i in user:
                     i['groups'] = groups
                 users_list.append(user)
+<<<<<<< HEAD
+=======
+                time.sleep(3)
+>>>>>>> master
     return users_list
 
 def get_couple(): # ищем пару по критериям
@@ -55,6 +65,7 @@ def get_couple(): # ищем пару по критериям
                     couple.append(people)
     return couple
 
+<<<<<<< HEAD
 # сохранить данные в файл JSON
 with open('couple.json', 'w', encoding='utf-8') as file:
     json.dump(get_couple(), file, ensure_ascii=False, indent=2)
@@ -72,3 +83,12 @@ for list in get_couple():
         couple.insert_one(people)
 print(list(couple.find())) # проверка
 
+=======
+with open('couple.json', 'w', encoding='utf-8') as file:
+    json.dump(get_couple(), file, ensure_ascii=False, indent=2)
+
+with open('couple.json', encoding = 'utf-8-sig' ) as file:
+     data = json.load(file)
+for user in data:
+    print(user[0])
+>>>>>>> master
