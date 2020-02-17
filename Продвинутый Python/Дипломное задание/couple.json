@@ -1,223 +1,74 @@
 [
-  [
-    {
-      "id": 91098303,
-      "first_name": "Ksyusha",
-      "last_name": "Boldyreva",
-      "is_closed": false,
-      "can_access_closed": true,
-      "sex": 1,
-      "bdate": "17.11.1999",
-      "city": {
-        "id": 110,
-        "title": "Perm"
-      },
-      "interests": "",
-      "groups": {
-        "count": 163,
-        "items": [
-          {
-            "id": 158384095,
-            "name": "Тень",
-            "screen_name": "club158384095",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-11.userapi.com/c831408/v831408139/1dee4e/MEgNsocG4NQ.jpg?ava=1",
-            "photo_100": "https://sun3-12.userapi.com/c831408/v831408139/1dee4d/GlmLlC-AgMM.jpg?ava=1",
-            "photo_200": "https://sun3-13.userapi.com/c831408/v831408139/1dee4c/vj8aOeqlVDY.jpg?ava=1"
-          },
-          {
-            "id": 142359890,
-            "name": "тлей.",
-            "screen_name": "tllei",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-10.userapi.com/c845021/v845021492/1a4c28/5Mt0kBvoLHc.jpg?ava=1",
-            "photo_100": "https://sun3-13.userapi.com/c845021/v845021492/1a4c27/lwICcMmghkY.jpg?ava=1",
-            "photo_200": "https://sun3-10.userapi.com/c845021/v845021492/1a4c26/sF8beHyGsQ4.jpg?ava=1"
-          },
-          {
-            "id": 40128356,
-            "name": "Аниме Комиксы",
-            "screen_name": "anicomix",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-11.userapi.com/c204724/v204724953/3dcfd/4mLgEHxdxEc.jpg?ava=1",
-            "photo_100": "https://sun3-12.userapi.com/c204724/v204724953/3dcfc/LZ19HidfNho.jpg?ava=1",
-            "photo_200": "https://sun3-13.userapi.com/c204724/v204724953/3dcfb/BosO-yfaf4o.jpg?ava=1"
-          },
-          {
-            "id": 161440075,
-            "name": "Аниме",
-            "screen_name": "ani_jp",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-11.userapi.com/c830401/v830401861/54d63/IzaUSn6VwAw.jpg?ava=1",
-            "photo_100": "https://sun3-11.userapi.com/c830401/v830401861/54d62/yI6-kzEMcks.jpg?ava=1",
-            "photo_200": "https://sun3-13.userapi.com/c830401/v830401861/54d61/5jGZBHQnPuQ.jpg?ava=1"
-          },
-          {
-            "id": 132658506,
-            "name": "Япония | Аниме",
-            "screen_name": "tokyodaily",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-12.userapi.com/c857524/v857524489/598f2/UGZtJy-4Vqs.jpg?ava=1",
-            "photo_100": "https://sun3-10.userapi.com/c857524/v857524489/598f1/Kq_IESbC8xg.jpg?ava=1",
-            "photo_200": "https://sun3-11.userapi.com/c857524/v857524489/598f0/QsjwNITp_l0.jpg?ava=1"
-          },
-          {
-            "id": 37143284,
-            "name": "Обо мне",
-            "screen_name": "obome",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun9-64.userapi.com/c630225/v630225207/4dde9/uJJvxxWavUA.jpg?ava=1",
-            "photo_100": "https://sun9-62.userapi.com/c630225/v630225207/4dde8/BJVc7dv1G_M.jpg?ava=1",
-            "photo_200": "https://sun9-5.userapi.com/c630225/v630225207/4dde7/GJ3ug5MEv2E.jpg?ava=1"
-          },
-          {
-            "id": 127060996,
-            "name": "Anime is my Soul | Аниме",
-            "screen_name": "animemysoul",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-10.userapi.com/c858520/v858520446/19aa2/twS_e3ZI9NQ.jpg?ava=1",
-            "photo_100": "https://sun3-10.userapi.com/c858520/v858520446/19aa1/CW4Vovj_56I.jpg?ava=1",
-            "photo_200": "https://sun3-10.userapi.com/c858520/v858520446/19aa0/rfL8Ru9bR1Q.jpg?ava=1"
-          },
-          {
-            "id": 148069987,
-            "name": "Блог — Factura | Подпишись",
-            "screen_name": "artbottop",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-13.userapi.com/c854324/v854324857/140563/vdqq4yfqlfs.jpg?ava=1",
-            "photo_100": "https://sun3-11.userapi.com/c854324/v854324857/140562/nixKUJ8klV0.jpg?ava=1",
-            "photo_200": "https://sun3-10.userapi.com/c854324/v854324857/140561/iyhJqeNhiBM.jpg?ava=1"
-          },
-          {
-            "id": 36085261,
-            "name": "Модная девушка",
-            "screen_name": "for.girl",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-13.userapi.com/c205828/v205828549/42a87/8KXXUxKpDQs.jpg?ava=1",
-            "photo_100": "https://sun3-13.userapi.com/c205828/v205828549/42a86/JlSteEBhY_o.jpg?ava=1",
-            "photo_200": "https://sun3-11.userapi.com/c205828/v205828549/42a85/mpf3zyveR24.jpg?ava=1"
-          },
-          {
-            "id": 28646177,
-            "name": "Fashion - мода и стиль",
-            "screen_name": "i.moda",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun9-65.userapi.com/c840632/v840632075/6dc9f/dFrQ2tEoRI8.jpg?ava=1",
-            "photo_100": "https://sun9-8.userapi.com/c840632/v840632075/6dc9e/JET2cWROgzo.jpg?ava=1",
-            "photo_200": "https://sun9-10.userapi.com/c840632/v840632075/6dc9d/fgW1UPiKunw.jpg?ava=1"
-          },
-          {
-            "id": 83815413,
-            "name": "Необычный гороскоп",
-            "screen_name": "unhoroscope",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-13.userapi.com/c205816/v205816615/37839/L5MIrTvZ7r4.jpg?ava=1",
-            "photo_100": "https://sun3-12.userapi.com/c205816/v205816615/37838/IYGGqJPmB58.jpg?ava=1",
-            "photo_200": "https://sun3-12.userapi.com/c205816/v205816615/37837/bRDSAcNQmm4.jpg?ava=1"
-          },
-          {
-            "id": 35132296,
-            "name": "Типичная Хамка",
-            "screen_name": "vk_oo",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-11.userapi.com/c200816/v200816096/10cee/OPbohQVkboQ.jpg?ava=1",
-            "photo_100": "https://sun3-11.userapi.com/c200816/v200816096/10ced/mkmw8r_9IbQ.jpg?ava=1",
-            "photo_200": "https://sun3-11.userapi.com/c200816/v200816096/10cec/yQx588NsTYw.jpg?ava=1"
-          },
-          {
-            "id": 34981365,
-            "name": "Мир красоты",
-            "screen_name": "be.girl",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-10.userapi.com/c206828/v206828703/5b601/PJIVbvSylRU.jpg?ava=1",
-            "photo_100": "https://sun3-10.userapi.com/c206828/v206828703/5b600/EYFgo1HA94M.jpg?ava=1",
-            "photo_200": "https://sun3-13.userapi.com/c206828/v206828703/5b5ff/A9zDp4u9bUg.jpg?ava=1"
-          },
-          {
-            "id": 40498005,
-            "name": "Психология отношений",
-            "screen_name": "psy.people",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-11.userapi.com/c858416/v858416025/16dedc/mkSfLO-zPz4.jpg?ava=1",
-            "photo_100": "https://sun3-13.userapi.com/c858416/v858416025/16dedb/-ICNcUJu_JA.jpg?ava=1",
-            "photo_200": "https://sun3-12.userapi.com/c858416/v858416025/16deda/y3vxj95IaeQ.jpg?ava=1"
-          },
-          {
-            "id": 84729904,
-            "name": "Манга Романтика~Сёдзе/Сёнен~Kоллекция подборок",
-            "screen_name": "mangaotaku",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-13.userapi.com/c855416/v855416834/1c5df9/tpzPJQ2Y4Ak.jpg?ava=1",
-            "photo_100": "https://sun3-10.userapi.com/c855416/v855416834/1c5df8/9tKqs5G26S0.jpg?ava=1",
-            "photo_200": "https://sun3-10.userapi.com/c855416/v855416834/1c5df7/bjEFgxpxAbc.jpg?ava=1"
-          },
-          {
-            "id": 39997298,
-            "name": "Для неё - Модный журнал",
-            "screen_name": "dlia_nee",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-12.userapi.com/c850736/v850736550/e096b/u0b_5n9w7AM.jpg?ava=1",
-            "photo_100": "https://sun3-10.userapi.com/c850736/v850736550/e096a/o9JimRWGDi8.jpg?ava=1",
-            "photo_200": "https://sun3-13.userapi.com/c850736/v850736550/e0969/c6TBEM15aoM.jpg?ava=1"
-          },
-          {
-            "id": 34757875,
-            "name": "Салон красоты",
-            "screen_name": "be.women",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-11.userapi.com/c851536/v851536993/122acb/L-qrreG8Z9M.jpg?ava=1",
-            "photo_100": "https://sun3-12.userapi.com/c851536/v851536993/122aca/DBbTTf0quTI.jpg?ava=1",
-            "photo_200": "https://sun3-13.userapi.com/c851536/v851536993/122ac9/P2HiRpadQps.jpg?ava=1"
-          },
-          {
-            "id": 43688579,
-            "name": "Шедевры рукоделия",
-            "screen_name": "h.made",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-10.userapi.com/c855236/v855236490/1500b1/P8k0l5R5xnY.jpg?ava=1",
-            "photo_100": "https://sun3-13.userapi.com/c855236/v855236490/1500b0/jNIQYBjdU3E.jpg?ava=1",
-            "photo_200": "https://sun3-10.userapi.com/c855236/v855236490/1500af/Gfz8u0PfZfY.jpg?ava=1"
-          },
-          {
-            "id": 54014337,
-            "name": "Аниме",
-            "screen_name": "danimeworld",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-11.userapi.com/c639829/v639829711/1fbc4/xTr7ACAVzi8.jpg?ava=1",
-            "photo_100": "https://sun3-13.userapi.com/c639829/v639829711/1fbc3/_Z8-DFx8Nm0.jpg?ava=1",
-            "photo_200": "https://sun3-10.userapi.com/c639829/v639829711/1fbc2/2k71ZlLnYsQ.jpg?ava=1"
-          },
-          {
-            "id": 41108497,
-            "name": "Любовь",
-            "screen_name": "iloveciss",
-            "is_closed": 0,
-            "type": "page",
-            "photo_50": "https://sun3-10.userapi.com/c846020/v846020168/95822/IG4jvpzfbs0.jpg?ava=1",
-            "photo_100": "https://sun3-13.userapi.com/c846020/v846020168/95821/lTKvSVUXiYg.jpg?ava=1",
-            "photo_200": "https://sun3-13.userapi.com/c846020/v846020168/95820/18SA_CKUItU.jpg?ava=1"
-          }
-        ]
-      }
-    }
-  ]
+  {
+    "id": "https://vk.com/id91098303",
+    "photos": [
+      "https://sun9-2.userapi.com/c637221/v637221303/8773/zRGawrEbZAE.jpg",
+      "https://sun9-11.userapi.com/c604825/v604825303/1fc16/wfaT_HewENw.jpg",
+      "https://sun9-58.userapi.com/c847218/v847218444/b0f20/GBIkOyvY39o.jpg"
+    ]
+  },
+  {
+    "id": "https://vk.com/id162441244",
+    "photos": [
+      "https://sun9-57.userapi.com/96P9Wa41HQfSUW1A5ca1V7sssc295kgXqD542A/gfu-rhO5j7w.jpg",
+      "https://sun9-47.userapi.com/c627625/v627625244/2bea2/HS41jI8GrtQ.jpg",
+      "https://sun9-3.userapi.com/c630619/v630619244/19a8b/faQuIriwzvk.jpg"
+    ]
+  },
+  {
+    "id": "https://vk.com/id76956315",
+    "photos": [
+      "https://sun9-70.userapi.com/c836722/v836722315/3ce4b/wLb2T_B4q9s.jpg",
+      "https://sun9-34.userapi.com/c824203/v824203428/a693a/gu1zyuR37rY.jpg",
+      "https://sun9-20.userapi.com/c824503/v824503590/bc775/X9q4gXA3N6Y.jpg"
+    ]
+  },
+  {
+    "id": "https://vk.com/id143426463",
+    "photos": [
+      "https://sun9-23.userapi.com/c604816/v604816463/375dd/Uax20xZ5tBk.jpg",
+      "https://sun9-7.userapi.com/c637517/v637517463/5bfd3/Iv7027VUKSw.jpg",
+      "https://sun9-58.userapi.com/c639127/v639127508/45e5e/i7i-zNy1vKg.jpg"
+    ]
+  },
+  {
+    "id": "https://vk.com/id146586509",
+    "photos": [
+      "https://sun9-22.userapi.com/c841625/v841625509/af3/YRiu2M0ZW0s.jpg",
+      "https://sun9-23.userapi.com/c638723/v638723829/5f595/ArxReOThpQU.jpg",
+      "https://sun9-10.userapi.com/c840227/v840227895/6cdf7/T3nw7tQ9ZJs.jpg"
+    ]
+  },
+  {
+    "id": "https://vk.com/id158366434",
+    "photos": [
+      "https://sun9-51.userapi.com/c639920/v639920723/3e4d4/qyXc9yLKQ2g.jpg",
+      "https://sun9-40.userapi.com/c847218/v847218310/53cbf/-06SifomGcQ.jpg",
+      "https://sun9-34.userapi.com/c854124/v854124877/85282/6L5Yx2CJb9Q.jpg"
+    ]
+  },
+  {
+    "id": "https://vk.com/kata5553555",
+    "photos": [
+      "https://sun9-56.userapi.com/c841429/v841429876/7a381/GM5vm9kxnEQ.jpg",
+      "https://sun9-13.userapi.com/c848528/v848528772/4c34d/-xLJkCwfRAc.jpg",
+      "https://sun9-54.userapi.com/c846018/v846018968/120acb/J_6cjBoCJVQ.jpg"
+    ]
+  },
+  {
+    "id": "https://vk.com/vechnyy_8",
+    "photos": [
+      "https://sun9-62.userapi.com/c628629/v628629029/19277/3RVWnwS0kM8.jpg",
+      "https://sun9-2.userapi.com/c628824/v628824029/1d5c7/GmunBe_4LFw.jpg",
+      "https://sun9-16.userapi.com/c628819/v628819029/36aac/P0ENjUFzwf8.jpg"
+    ]
+  },
+  {
+    "id": "https://vk.com/alexandra___pavlova",
+    "photos": [
+      "https://sun3-12.userapi.com/G7nydXEOOr0zU9buWY-O4NBx25U36N7RQHcf8w/VOrRY_qj43g.jpg",
+      "https://sun9-10.userapi.com/c628825/v628825127/1cf5c/5gbbgU3emTQ.jpg",
+      "https://sun9-51.userapi.com/c847021/v847021017/183108/Z6OTNsMnVAc.jpg"
+    ]
+  }
 ]
