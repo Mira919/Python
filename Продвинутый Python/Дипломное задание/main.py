@@ -12,7 +12,8 @@ session = vk.Session(access_token)
 api = vk.API(session, v=v)
 
 
-def get_user(id): # получаем страницу пользователя, которому надо найти пару
+# получаем страницу пользователя, которому надо найти пару
+def get_user(id): 
     start_time = datetime.datetime.now()
     user = api.users.get(user_ids=id, fields='bdate,sex,city,interests')
     groups = api.users.getSubscriptions(user_id=id, extended=1)
@@ -23,10 +24,11 @@ def get_user(id): # получаем страницу пользователя, 
     return user
 
 
-def get_users(): # получаем список из страниц пользователей, из которых будем выбирать пару. (Страницы с id от 1 до 100)
+# получаем список из страниц пользователей, из которых будем выбирать пару. (Страницы с id от 1 до 100)
+def get_users():
     start_time = datetime.datetime.now()
     users_id = []
-    for i in range(1):
+    for i in range(100):
         users_id.append(random.randrange(1, 169989152))
     users_id += ['91098303', '162441244', '76956315', '143426463', '146586509', '151363555', '158366434', '161726777', '162764029', '56862127']
 
@@ -44,7 +46,8 @@ def get_users(): # получаем список из страниц польз�
     return users_list
 
 
-def get_couple(): # ищем пару по критериям
+# ищем пару по критериям
+def get_couple(): 
     start_time = datetime.datetime.now()
     user = get_user('169989152')
     users = get_users()
@@ -64,6 +67,7 @@ def get_couple(): # ищем пару по критериям
     return couple
 
 
+# Получаем ссылку на пользователя и топ 3 фотографии
 def get_url_photo():
     start_time = datetime.datetime.now()
     list_to_save = []
@@ -87,18 +91,20 @@ def get_url_photo():
             top_dict['photos'] = url_list[:3]
             list_to_save.append(top_dict)
     print(f'Функция get_photo исполнялась {datetime.datetime.now() - start_time}')
-    return list_to_save
+    return list_to_save[:10]
 
 
 func = get_url_photo()
 
 
-def save_to_file(file_name): # сохранить данные в файл JSON
+# сохранить данные в файл JSON
+def save_to_file(file_name): 
     with open(file_name, 'w', encoding='utf-8') as file:
         json.dump(func, file, ensure_ascii=False, indent=2)
 
 
-def save_to_mongodb(): # сохранить данные в БД MongoDB
+# сохранить данные в БД MongoDB
+def save_to_mongodb(): 
     client = MongoClient()
     my_db = client['vk_api'] # создать/обратится к бд
     couple = my_db['couple'] # создать/обратится к коллекции
