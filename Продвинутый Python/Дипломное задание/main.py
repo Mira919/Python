@@ -35,7 +35,7 @@ def get_couple():
     else:
         sex = 1
 
-    users = api.users.search(count=100, sex=sex, city=user[0]['city']['id'], fields='bdate,sex,city,domain') # count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
+    users = api.users.search(count=100, sex=sex, city=user[0]['city']['id'], fields='bdate,sex,city,domain')
     for people in users['items']:
         if not people['is_closed']: # проверка что страница не закрыта
             try:
@@ -97,4 +97,4 @@ def save_to_mongodb():
 
 if __name__ == '__main__':
     save_to_file('couple.json')
-    # save_to_mongodb()
+    save_to_mongodb()
