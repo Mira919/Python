@@ -21,7 +21,7 @@ def get_user(id):
     for i in user:
         i['groups'] = groups
     print(f'Функция get_user исполнялась {datetime.datetime.now() - start_time}')
-    return user
+    return user[0]
 
 
 # ищем пару по критериям
@@ -30,23 +30,23 @@ def get_couple():
     user = get_user('169989152')
     couple = []
 
-    if user[0]['sex'] == 1: # определить пол
+    if user['sex'] == 1: # определить пол
         sex = 2
     else:
         sex = 1
 
-    users = api.users.search(count=100, sex=sex, city=user[0]['city']['id'], fields='bdate,sex,city,domain')
+    users = api.users.search(count=150, sex=sex, city=user['city']['id'], fields='bdate,sex,city,domain') # count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
     for people in users['items']:
         if not people['is_closed']: # проверка что страница не закрыта
             try:
-                age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user[0]['bdate'], '%d.%m.%Y')) / 365)[:2]
+                age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2]
                 age_people = str((datetime.datetime.today() - datetime.datetime.strptime(people['bdate'], '%d.%m.%Y'))/365)[:2]
                 if 6 > int(age_user) - int(age_people) > -6:  # проверка по возрасту (+- 6 лет)
                     couple.append(people)
             except:
                 pass
     print(f'Функция get_couple исполнялась {datetime.datetime.now() - start_time}')
-    return couple
+    return couple[:10]
 
 
 # Получаем ссылку на пользователя и топ 3 фотографии
@@ -72,7 +72,7 @@ def get_url_photo():
         top_dict['photos'] = url_list[:3] # добавляем 3 ссылки на фотографии
         list_to_save.append(top_dict)
     print(f'Функция get_photo исполнялась {datetime.datetime.now() - start_time}')
-    return list_to_save[:10]
+    return list_to_save
 
 
 func = get_url_photo()
