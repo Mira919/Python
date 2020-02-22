@@ -1,3 +1,4 @@
+        users = main.get_couple()
 import unittest
 import main
 
