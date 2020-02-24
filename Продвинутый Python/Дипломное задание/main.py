@@ -1,8 +1,11 @@
 import vk
-import time
 import datetime
+import time
 import json
 from pymongo import MongoClient
+
+start_time = datetime.datetime.now()
+print(f'Программа начала свою работу')
 
 access_token = '73eaea320bdc0d3299faa475c196cfea1c4df9da4c6d291633f9fe8f83c08c4de2a3abf89fbc3ed8a44e1'
 v = '5.103'
@@ -10,13 +13,14 @@ v = '5.103'
 session = vk.Session(access_token)
 api = vk.API(session, v=v)
 
+user_id = input('Введите ваш ID вконтакте (например 169989152): ')
+
 
 # получаем страницу пользователя, которому надо найти пару
-def get_user(id): 
-    start_time = datetime.datetime.now()
+def get_user():
     try: # проверка что профиль не закрыт, если закрыт то программа завершается
-        user = api.users.get(user_ids=id, fields='bdate,sex,city,interests')
-        groups = api.users.getSubscriptions(user_id=id, extended=1)
+        user = api.users.get(user_ids=user_id, fields='bdate,sex,city,interests')
+        groups = api.users.getSubscriptions(user_id=user_id, extended=1)
         time.sleep(1.5)
         for i in user:
             i['groups'] = groups
@@ -28,18 +32,15 @@ def get_user(id):
         print('У вас на странице не задан город! Пожалуйста укажите его в своих настройках ВКонтакте.')
         exit(0)
 
-    print(f'Функция get_user исполнялась {datetime.datetime.now() - start_time}')
     return user[0]
 
 
 # ищем пару по критериям
-def get_couple(): 
-    start_time = datetime.datetime.now()
-    user_id = input('Введите ваш ID вконтакте (например 169989152): ')
-    user = get_user(user_id)
+def get_couple():
+    user = get_user()
     couple = []
 
-    if user['sex'] == 1: # определить какой у пользователя пол пол
+    if user['sex'] == 1: # определить какой у пользователя пол
         sex = 2
     else:
         sex = 1
@@ -49,7 +50,7 @@ def get_couple():
     except:
         bdate = input('У вас в профиле не верно указана или вообще не указана дата рождения, пожалуйста введите ее в формате ДД.ММ.ГГ: ')
         user['bdate'] = bdate
-        age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2]
+        age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2] # сколько пользователю лет
 
     users = api.users.search(count=600, sex=sex, city=user['city']['id'], fields='bdate,sex,city,domain,relation') # ищем подходящих людей count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
     for people in users['items']:
@@ -61,14 +62,12 @@ def get_couple():
                         couple.append(people)
             except:
                 pass
-    print(f'Функция get_couple исполнялась {datetime.datetime.now() - start_time}')
     return couple[:10]
 
 
 # Получаем ссылку на пользователя и топ 3 фотографии
 def get_url_photo():
     users = get_couple()
-    start_time = datetime.datetime.now()
     list_to_save = [] # конечный результат
 
     for user in users:
@@ -87,7 +86,6 @@ def get_url_photo():
         top_dict['id'] = 'https://vk.com/' + user['domain'] # добавляем ссылку на пользователя
         top_dict['photos'] = url_list[:3] # добавляем 3 ссылки на фотографии
         list_to_save.append(top_dict)
-    print(f'Функция get_photo исполнялась {datetime.datetime.now() - start_time}')
     return list_to_save
 
 
@@ -111,6 +109,12 @@ def save_to_mongodb():
     print(list(couple.find())) # проверка
 
 
+finish_time = datetime.datetime.now()
+run_time = finish_time - start_time
+print('Программа закончила работу')
+print(f'Программа выполнялась {str(run_time)[:9]} секунды')
+
 if __name__ == '__main__':
     save_to_file('couple.json')
     save_to_mongodb()
+
