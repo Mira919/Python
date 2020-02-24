@@ -14,7 +14,7 @@ api = vk.API(session, v=v)
 # получаем страницу пользователя, которому надо найти пару
 def get_user(id): 
     start_time = datetime.datetime.now()
-    try: # проверка что профиль не закрыт
+    try: # проверка что профиль не закрыт, если закрыт то программа завершается
         user = api.users.get(user_ids=id, fields='bdate,sex,city,interests')
         groups = api.users.getSubscriptions(user_id=id, extended=1)
         time.sleep(1.5)
@@ -24,8 +24,8 @@ def get_user(id):
         print('Извините, ваш профиль закрыт!')
         exit(0)
 
-    if 'city' not in user[0]:
-        print('У вас на странице не задан город! Пожалуйста укажите его в своих настройках.')
+    if 'city' not in user[0]: # проверка указан ли на странице город, если не указан то программа завершается
+        print('У вас на странице не задан город! Пожалуйста укажите его в своих настройках ВКонтакте.')
         exit(0)
 
     print(f'Функция get_user исполнялась {datetime.datetime.now() - start_time}')
@@ -44,19 +44,18 @@ def get_couple():
     else:
         sex = 1
 
-    try: # определить сколько пользователю лет
-        age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2]
+    try: # проверка в правильном ли формате указана дата рождения и определение сколько пользователю лет
+        age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2] # сколько пользователю лет
     except:
-        bdate = input('У вас в профиле не верно указана дата рождения, пожалуйста введите ее в верном формате ДД.ММ.ГГ: ')
+        bdate = input('У вас в профиле не верно указана или вообще не указана дата рождения, пожалуйста введите ее в формате ДД.ММ.ГГ: ')
         user['bdate'] = bdate
-        print(user)
         age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2]
 
-    users = api.users.search(count=600, sex=sex, city=user['city']['id'], fields='bdate,sex,city,domain,relation') # count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
+    users = api.users.search(count=600, sex=sex, city=user['city']['id'], fields='bdate,sex,city,domain,relation') # ищем подходящих людей count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
     for people in users['items']:
         if not people['is_closed']: # проверка что страница не закрыта
             try:
-                age_people = str((datetime.datetime.today() - datetime.datetime.strptime(people['bdate'], '%d.%m.%Y'))/365)[:2]
+                age_people = str((datetime.datetime.today() - datetime.datetime.strptime(people['bdate'], '%d.%m.%Y'))/365)[:2] # сколько лет искомому человеку
                 if 6 > int(age_user) - int(age_people) > -6:  # проверка по возрасту (+- 6 лет)
                     if people['relation'] != 4 and people['relation'] != 8 and people['relation'] != 3: # проверка на семейное положение (не женат/замужем, не помолвлен/помолвлена, не в гражданском браке)
                         couple.append(people)
