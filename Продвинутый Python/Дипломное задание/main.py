@@ -14,11 +14,20 @@ api = vk.API(session, v=v)
 # получаем страницу пользователя, которому надо найти пару
 def get_user(id): 
     start_time = datetime.datetime.now()
-    user = api.users.get(user_ids=id, fields='bdate,sex,city,interests')
-    groups = api.users.getSubscriptions(user_id=id, extended=1)
-    time.sleep(1.5)
-    for i in user:
-        i['groups'] = groups
+    try: # проверка что профиль не закрыт
+        user = api.users.get(user_ids=id, fields='bdate,sex,city,interests')
+        groups = api.users.getSubscriptions(user_id=id, extended=1)
+        time.sleep(1.5)
+        for i in user:
+            i['groups'] = groups
+    except:
+        print('Извините, ваш профиль закрыт!')
+        exit(0)
+
+    if 'city' not in user[0]:
+        print('У вас на странице не задан город! Пожалуйста укажите его в своих настройках.')
+        exit(0)
+
     print(f'Функция get_user исполнялась {datetime.datetime.now() - start_time}')
     return user[0]
 
@@ -26,19 +35,27 @@ def get_user(id):
 # ищем пару по критериям
 def get_couple(): 
     start_time = datetime.datetime.now()
-    user = get_user('169989152')
+    user_id = input('Введите ваш ID вконтакте (например 169989152): ')
+    user = get_user(user_id)
     couple = []
 
-    if user['sex'] == 1: # определить пол
+    if user['sex'] == 1: # определить какой у пользователя пол пол
         sex = 2
     else:
         sex = 1
+
+    try: # определить сколько пользователю лет
+        age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2]
+    except:
+        bdate = input('У вас в профиле не верно указана дата рождения, пожалуйста введите ее в верном формате ДД.ММ.ГГ: ')
+        user['bdate'] = bdate
+        print(user)
+        age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2]
 
     users = api.users.search(count=600, sex=sex, city=user['city']['id'], fields='bdate,sex,city,domain,relation') # count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
     for people in users['items']:
         if not people['is_closed']: # проверка что страница не закрыта
             try:
-                age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2]
                 age_people = str((datetime.datetime.today() - datetime.datetime.strptime(people['bdate'], '%d.%m.%Y'))/365)[:2]
                 if 6 > int(age_user) - int(age_people) > -6:  # проверка по возрасту (+- 6 лет)
                     if people['relation'] != 4 and people['relation'] != 8 and people['relation'] != 3: # проверка на семейное положение (не женат/замужем, не помолвлен/помолвлена, не в гражданском браке)
