@@ -34,14 +34,15 @@ def get_couple():
     else:
         sex = 1
 
-    users = api.users.search(count=150, sex=sex, city=user['city']['id'], fields='bdate,sex,city,domain') # count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
+    users = api.users.search(count=600, sex=sex, city=user['city']['id'], fields='bdate,sex,city,domain,relation') # count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
     for people in users['items']:
         if not people['is_closed']: # проверка что страница не закрыта
             try:
                 age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2]
                 age_people = str((datetime.datetime.today() - datetime.datetime.strptime(people['bdate'], '%d.%m.%Y'))/365)[:2]
                 if 6 > int(age_user) - int(age_people) > -6:  # проверка по возрасту (+- 6 лет)
-                    couple.append(people)
+                    if people['relation'] != 4 and people['relation'] != 8 and people['relation'] != 3: # проверка на семейное положение (не женат/замужем, не помолвлен/помолвлена, не в гражданском браке)
+                        couple.append(people)
             except:
                 pass
     print(f'Функция get_couple исполнялась {datetime.datetime.now() - start_time}')
