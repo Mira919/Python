@@ -79,19 +79,19 @@ def get_url_photo():
         for photo in user_photo['items']:
             top3_like.append(photo['likes']['count'])  # добавляем лайки фоток
         top3_like.sort(reverse=True)  # сортировка лайков по убыванию
-        sum_like_list.append(sum(top3_like[:3])) # список из суммых лайков 3ех фотографий
+        top3_like = top3_like[:3]
+        sum_like_list.append(sum(top3_like)) # список из суммых лайков 3ех фотографий
 
         top_dict = {}  # id: ссылка на пользователя, photos: [ссылки на топ 3 фотографии]
         url_list = []  # список для хранения ссылок на фотки
 
         for photo in user_photo['items']:
-            if photo['likes']['count'] in top3_like[:3]:  # если фото в топ 3 лайков, то добавляем ссылку на фото
+            if photo['likes']['count'] in top3_like:  # если фото в топ 3 лайков, то добавляем ссылку на фото
                 url_list.append(photo['sizes'][0]['url'])
-        top_dict['sum_like'] = sum(top3_like[:3]) # добавляем суммарное кол-во лайков на трех фотографиях
+        top_dict['sum_like'] = sum(top3_like) # добавляем суммарное кол-во лайков на трех фотографиях
         top_dict['id'] = 'https://vk.com/' + user['domain']  # добавляем ссылку на пользователя
         top_dict['photos'] = url_list[:3]  # добавляем 3 ссылки на фотографии
         unsorted_like.append(top_dict) # список из 10 людей, где у каждого: кол-во лайков, ссылка, топ 3 фотографии
-
 
     sum_like_list.sort(reverse=True) # сортируем по убыванию
     while sum_like_list: # цикл который сортирует список пар чтобы сначала шли с самым большим количеством лайков
@@ -133,4 +133,4 @@ print(f'Программа выполнялась {str(run_time)[:9]} секун
 
 if __name__ == '__main__':
     save_to_file('couple.json')
-    save_to_mongodb()
+    # save_to_mongodb()
