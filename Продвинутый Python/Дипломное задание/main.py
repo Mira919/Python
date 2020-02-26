@@ -68,9 +68,9 @@ def get_couple():
 # Получаем ссылку на пользователя и топ 3 фотографии
 def get_url_photo():
     users = get_couple()
-    unsorted_like = []
-    sorted_like = []  # конечный результат
-    sum_like_list = []
+    unsorted_like = [] # список из 10 людей, где у каждого: кол-во лайков, ссылка, топ 3 фотографии
+    sorted_like = []  # конечный, отсортированный результат
+    sum_like_list = [] # список из суммых лайков 3ех фотографий
 
     for user in users:
         top3_like = []  # лайки фоток по убыванию
