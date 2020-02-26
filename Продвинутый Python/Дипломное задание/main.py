@@ -18,7 +18,7 @@ user_id = input('Введите ваш ID вконтакте (например 1
 
 # получаем страницу пользователя, которому надо найти пару
 def get_user():
-    try: # проверка что профиль не закрыт, если закрыт то программа завершается
+    try:  # проверка что профиль не закрыт, если закрыт то программа завершается
         user = api.users.get(user_ids=user_id, fields='bdate,sex,city,interests')
         groups = api.users.getSubscriptions(user_id=user_id, extended=1)
         time.sleep(1.5)
@@ -28,7 +28,7 @@ def get_user():
         print('Извините, ваш профиль закрыт!')
         exit(0)
 
-    if 'city' not in user[0]: # проверка указан ли на странице город, если не указан то программа завершается
+    if 'city' not in user[0]:  # проверка указан ли на странице город, если не указан то программа завершается
         print('У вас на странице не задан город! Пожалуйста укажите его в своих настройках ВКонтакте.')
         exit(0)
 
@@ -40,25 +40,25 @@ def get_couple():
     user = get_user()
     couple = []
 
-    if user['sex'] == 1: # определить какой у пользователя пол
+    if user['sex'] == 1:  # определить какой у пользователя пол
         sex = 2
     else:
         sex = 1
 
-    try: # проверка в правильном ли формате указана дата рождения и определение сколько пользователю лет
-        age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2] # сколько пользователю лет
+    try:  # проверка в правильном ли формате указана дата рождения и определение сколько пользователю лет
+        age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2]  # сколько пользователю лет
     except:
         bdate = input('У вас в профиле не верно указана или вообще не указана дата рождения, пожалуйста введите ее в формате ДД.ММ.ГГ: ')
         user['bdate'] = bdate
-        age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2] # сколько пользователю лет
+        age_user = str((datetime.datetime.today() - datetime.datetime.strptime(user['bdate'], '%d.%m.%Y')) / 365)[:2]  # сколько пользователю лет
 
-    users = api.users.search(count=600, sex=sex, city=user['city']['id'], fields='bdate,sex,city,domain,relation') # ищем подходящих людей count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
+    users = api.users.search(count=600, sex=sex, city=user['city']['id'],fields='bdate,sex,city,domain,relation')  # ищем подходящих людей count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
     for people in users['items']:
-        if not people['is_closed']: # проверка что страница не закрыта
+        if not people['is_closed']:  # проверка что страница не закрыта
             try:
-                age_people = str((datetime.datetime.today() - datetime.datetime.strptime(people['bdate'], '%d.%m.%Y'))/365)[:2] # сколько лет искомому человеку
+                age_people = str((datetime.datetime.today() - datetime.datetime.strptime(people['bdate'], '%d.%m.%Y')) / 365)[:2]  # сколько лет искомому человеку
                 if 6 > int(age_user) - int(age_people) > -6:  # проверка по возрасту (+- 6 лет)
-                    if people['relation'] != 4 and people['relation'] != 8 and people['relation'] != 3: # проверка на семейное положение (не женат/замужем, не помолвлен/помолвлена, не в гражданском браке)
+                    if people['relation'] != 4 and people['relation'] != 8 and people['relation'] != 3:  # проверка на семейное положение (не женат/замужем, не помолвлен/помолвлена, не в гражданском браке)
                         couple.append(people)
             except:
                 pass
@@ -68,45 +68,62 @@ def get_couple():
 # Получаем ссылку на пользователя и топ 3 фотографии
 def get_url_photo():
     users = get_couple()
-    list_to_save = [] # конечный результат
+    unsorted_like = []
+    sorted_like = []  # конечный результат
+    sum_like_list = []
 
     for user in users:
-        top3_like = [] # лайки фоток по убыванию
-        user_photo = api.photos.get(owner_id=user['id'], album_id='profile', extended = 1) # получаем фотки со страницы пользователя
+        top3_like = []  # лайки фоток по убыванию
+        user_photo = api.photos.get(owner_id=user['id'], album_id='profile',extended=1)  # получаем фотки со страницы пользователя
         time.sleep(1.5)
         for photo in user_photo['items']:
-            top3_like.append(photo['likes']['count']) # добавляем лайки фоток
-        top3_like.sort(reverse=True) # сортировка лайков по убыванию
+            top3_like.append(photo['likes']['count'])  # добавляем лайки фоток
+        top3_like.sort(reverse=True)  # сортировка лайков по убыванию
+        sum_like_list.append(sum(top3_like[:3])) # список из суммых лайков 3ех фотографий
 
-        top_dict = {} # id: ссылка на пользователя, photos: [ссылки на топ 3 фотографии]
-        url_list = [] # список для хранения ссылок на фотки
+        top_dict = {}  # id: ссылка на пользователя, photos: [ссылки на топ 3 фотографии]
+        url_list = []  # список для хранения ссылок на фотки
+
         for photo in user_photo['items']:
-            if photo['likes']['count'] in top3_like[:3]: # если фото в топ 3 лайков, то добавляем ссылку на фото
+            if photo['likes']['count'] in top3_like[:3]:  # если фото в топ 3 лайков, то добавляем ссылку на фото
                 url_list.append(photo['sizes'][0]['url'])
-        top_dict['id'] = 'https://vk.com/' + user['domain'] # добавляем ссылку на пользователя
-        top_dict['photos'] = url_list[:3] # добавляем 3 ссылки на фотографии
-        list_to_save.append(top_dict)
-    return list_to_save
+        top_dict['sum_like'] = sum(top3_like[:3]) # добавляем суммарное кол-во лайков на трех фотографиях
+        top_dict['id'] = 'https://vk.com/' + user['domain']  # добавляем ссылку на пользователя
+        top_dict['photos'] = url_list[:3]  # добавляем 3 ссылки на фотографии
+        unsorted_like.append(top_dict) # список из 10 людей, где у каждого: кол-во лайков, ссылка, топ 3 фотографии
+
+
+    sum_like_list.sort(reverse=True) # сортируем по убыванию
+    while sum_like_list: # цикл который сортирует список пар чтобы сначала шли с самым большим количеством лайков
+        for account in unsorted_like:
+            if len(sum_like_list) == 0:
+                break
+            if account['sum_like'] == sum_like_list[0]:
+                sorted_like.append(account)
+                del (sum_like_list[0])
+    # for user in sorted_like:
+    #     del user['sum_like']
+    return sorted_like
 
 
 func = get_url_photo()
 
 
 # сохранить данные в файл JSON
-def save_to_file(file_name): 
+def save_to_file(file_name):
     with open(file_name, 'w', encoding='utf-8') as file:
         json.dump(func, file, ensure_ascii=False, indent=2)
 
 
 # сохранить данные в БД MongoDB
-def save_to_mongodb(): 
+def save_to_mongodb():
     client = MongoClient()
-    my_db = client['vk_api'] # создать/обратится к бд
-    couple = my_db['couple'] # создать/обратится к коллекции
+    my_db = client['vk_api']  # создать/обратится к бд
+    couple = my_db['couple']  # создать/обратится к коллекции
     # my_db.couple.drop()
     for people in func:
         couple.insert_one(people)
-    print(list(couple.find())) # проверка
+    print(list(couple.find()))  # проверка
 
 
 finish_time = datetime.datetime.now()
@@ -117,4 +134,3 @@ print(f'Программа выполнялась {str(run_time)[:9]} секун
 if __name__ == '__main__':
     save_to_file('couple.json')
     save_to_mongodb()
-
