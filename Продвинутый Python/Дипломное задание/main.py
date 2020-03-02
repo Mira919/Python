@@ -15,12 +15,11 @@ api = vk.API(session, v=v)
 
 user_id = input('Введите ваш ID вконтакте (например 169989152): ')
 
-
 # получаем страницу пользователя, которому надо найти пару
 def get_user():
     try:  # проверка что профиль не закрыт, если закрыт то программа завершается
-        user = api.users.get(user_ids=user_id, fields='bdate,sex,city,interests')
-        groups = api.users.getSubscriptions(user_id=user_id, extended=1)
+        user = api.users.get(user_ids=user_id, fields='bdate,sex,city,interests') # получаем информацию пользователя
+        groups = api.users.getSubscriptions(user_id=user_id, extended=1) # получаем группы пользователя
         time.sleep(1.5)
         for i in user:
             i['groups'] = groups
@@ -54,7 +53,7 @@ def get_couple():
 
     users = api.users.search(count=600, sex=sex, city=user['city']['id'],fields='bdate,sex,city,domain,relation')  # ищем подходящих людей count(кол-во), sex(пол), сity(город), bdate(день рождение), domain(короткие адрес)
     for people in users['items']:
-        if not people['is_closed']:  # проверка что страница не закрыта
+        if not people['is_closed']: # проверка что страница не закрыта
             try:
                 age_people = str((datetime.datetime.today() - datetime.datetime.strptime(people['bdate'], '%d.%m.%Y')) / 365)[:2]  # сколько лет искомому человеку
                 if 6 > int(age_user) - int(age_people) > -6:  # проверка по возрасту (+- 6 лет)
@@ -96,13 +95,13 @@ def get_url_photo():
     sum_like_list.sort(reverse=True) # сортируем по убыванию
     while sum_like_list: # цикл который сортирует список пар чтобы сначала шли с самым большим количеством лайков
         for account in unsorted_like:
-            if len(sum_like_list) == 0:
+            if len(sum_like_list) == 0: # если поля лайков нет то завершить цикл
                 break
-            if account['sum_like'] == sum_like_list[0]:
-                sorted_like.append(account)
-                del (sum_like_list[0])
+            if account['sum_like'] == sum_like_list[0]: # если поле лайков у человека в списке топ лайков
+                sorted_like.append(account) # то добавляем в список
+                del (sum_like_list[0]) # удаляем поле лайков у человека
     # for user in sorted_like:
-    #     del user['sum_like']
+    #     del user['sum_like'] # удалить поле лайков при выводе
     return sorted_like
 
 
