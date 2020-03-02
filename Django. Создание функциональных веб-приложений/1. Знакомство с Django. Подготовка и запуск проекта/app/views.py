@@ -8,8 +8,8 @@ def home_view(request):
 
     pages = {
         'Главная страница': reverse('home'),
-        'Показать текущее время': 'current_time/',
-        'Показать содержимое рабочей директории': 'workdir/'
+        'Показать текущее время': reverse('time'),
+        'Показать содержимое рабочей директории': reverse('workdir')
     }
 
     context = {
@@ -26,4 +26,4 @@ def time_view(request):
 
 def workdir_view(request):
     msg = os.listdir(path=".")
-    return HttpResponse(msg)
+    return HttpResponse('<br/>'.join(msg))
