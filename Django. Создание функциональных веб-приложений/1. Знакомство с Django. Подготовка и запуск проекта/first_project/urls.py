@@ -16,13 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-# from app.views import home_view
-
 from app import views
 
 urlpatterns = [
-    path('', views.home_view, name='home'),
-    path('current_time/', views.time_view, name='time'),
-    path('workdir/', views.workdir_view, name='workdir'),
-    path('admin/', admin.site.urls),
+    path('', views.home_view, name='home'), # функция home_view, будет открываться по reverse = 'home' (указывается в файле views.py)
+    path('current_time/', views.time_view, name='time'), # функция time_view, будет открываться по reverse = 'time' (указывается в файле views.py)
+    path('workdir/', views.workdir_view, name='workdir'), # функция workdir_view, будет открываться по reverse = 'workdir' (указывается в файле views.py)
+    path('admin/', admin.site.urls), # функция админа, открывает админку
 ]
