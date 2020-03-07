@@ -1,7 +1,7 @@
 {% extends 'base.html' %} <!-- чтобы вставлять блоки кода в файл base.html-->
 {% load string_filters %} <!-- загружаем файл с фильтром в шаблон-->
 
-{% block body %} <!-- наследование, вставляем весь код ниже в файл base.html-->
+{% block body %} <!-- наследование, вставляем весь код в блоке в файл base.html-->
     {{ user_info|lower }} <!-- выводится vova, |lower - фильтр который выводит слово в нижнем регистре-->
     {{ user_info|camel_string }} <!-- выводится vOvA, |camel_string - фильтр который делает каждую вторую букву заглавной, находится в templatetags/string_filters.py-->
     {{ u.a }}, {{ u.b }}
