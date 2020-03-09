@@ -1,3 +1,5 @@
+{% load color_filters %} <!-- загружаем файл с фильтром в шаблон-->
+
 <!DOCTYPE html>{% load static %}
 <html>
   <head>
@@ -17,9 +19,46 @@
       <div class="row">
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
-        
-        <!-- Ваша логика -->
-
+          <table> <!-- Добавляем таблицу -->
+            <thead> <!-- Добавляем заголовки столбцов -->
+              <tr>
+                <th>Год</th>
+                <th>Январь</th>
+                <th>Февраль</th>
+                <th>Март</th>
+                <th>Апрель</th>
+                <th>Май</th>
+                <th>Июнь</th>
+                <th>Июль</th>
+                <th>Август</th>
+                <th>Сентябрь</th>
+                <th>Октябрь</th>
+                <th>Ноябрь</th>
+                <th>Декабрь</th>
+                <th bgcolor="gray">Суммарная</th>
+              </tr>
+            </thead>
+            <tbody> <!-- добавляем данные в таблицу -->
+            {% for inf in inflation %} <!-- берем список из файла views.py -->
+              <tr>
+                <td>{{ inf.Year }}</td>
+                <td bgcolor={{ inf.January|color_value }}> {{ inf.January }} </td> <!-- применяем фильтр цветов из файла color.filters.py и вставляем данные -->
+                <td bgcolor={{ inf.February|color_value }}> {{ inf.February }} </td>
+                <td bgcolor={{ inf.March|color_value }}> {{ inf.March }} </td>
+                <td bgcolor={{ inf.April|color_value }}> {{ inf.April }} </td>
+                <td bgcolor={{ inf.May|color_value }}> {{ inf.May }} </td>
+                <td bgcolor={{ inf.June|color_value }}> {{ inf.June }} </td>
+                <td bgcolor={{ inf.July|color_value }}> {{ inf.July }} </td>
+                <td bgcolor={{ inf.August|color_value }}> {{ inf.August }} </td>
+                <td bgcolor={{ inf.September|color_value }}> {{ inf.September }} </td>
+                <td bgcolor={{ inf.October|color_value }}> {{ inf.October }} </td>
+                <td bgcolor={{ inf.November|color_value }}> {{ inf.November }} </td>
+                <td bgcolor={{ inf.December|color_value }}> {{ inf.December }} </td>
+                <td bgcolor="gray">{{ inf.Sum }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
         </div>
       </div>
     {% endblock %}
