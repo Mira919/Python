@@ -9,12 +9,11 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
-        with open('phones.csv', 'r') as csvfile:
-
+        with open('phones.csv', 'r') as csvfile: # читаем csv файл
             phone_reader = csv.reader(csvfile, delimiter=';')
-            # пропускаем заголовок
-            next(phone_reader)
 
-            for line in phone_reader:
-                # TODO: Добавьте сохранение модели
-                pass
+            next(phone_reader) # пропускаем заголовок
+
+            for line in phone_reader: # создаем из CSV - файла
+                phone = Phone(id=int(line[0]), name=line[1], image=line[2], price=line[3], release_date=line[4], lte_exists=line[5])
+                phone.save()
