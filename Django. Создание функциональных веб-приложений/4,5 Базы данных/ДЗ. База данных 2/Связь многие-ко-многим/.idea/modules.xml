@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Связь многие-ко-многим.iml" filepath="$PROJECT_DIR$/.idea/Связь многие-ко-многим.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/m2m-relations.iml" filepath="$PROJECT_DIR$/.idea/m2m-relations.iml" />
     </modules>
   </component>
 </project>
