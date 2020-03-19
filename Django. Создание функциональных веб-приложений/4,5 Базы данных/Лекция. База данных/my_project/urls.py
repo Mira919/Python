@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 
+from students.views import list_courses
+
 urlpatterns = [
+    path('courses/', list_courses, name='courses-list'),
     path('admin/', admin.site.urls),
 ]
 

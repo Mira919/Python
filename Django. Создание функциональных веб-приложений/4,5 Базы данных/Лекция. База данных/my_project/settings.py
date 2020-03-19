@@ -131,3 +131,10 @@ INTERNAL_IPS = [ # добавление DebugToolBar
     '127.0.0.1',
     # ...
 ]
+
+CACHES = { # для хэширования (используется в views.py)
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'single-cache',
+    }
+}
