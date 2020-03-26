@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Я страничка</title>
+</head>
+<body>
+    <h1>LOL</h1>
+    <h1>{{ header }}</h1> <!-- переменная из файла views.py, функция two_view из context -->
+
+    <ul>
+        {% for post in footer %} <!-- переменная из файла views.py, функция two_view из context, берет список footer и проходится -->
+            <li>{{ post }}</li> <!-- выводит каждый элемент из списка footer -->
+        {% endfor %} # заканчивается цикл
+    </ul>
+
+</body>
+</html>
