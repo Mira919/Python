@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'isb627nre^_!i$fft&536j+4x4_+#dp8f)4jw_u+c6d6z$a$w='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True # режим тестирования
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] # в целях защиты прописывать хосты который django будет обслуживать
 
 
 # Application definition
@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'my_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
+DATABASES = { # соединение с БД
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),

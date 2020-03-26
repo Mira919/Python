@@ -9,10 +9,19 @@
     <h1>{{ header }}</h1> <!-- переменная из файла views.py, функция two_view из context -->
 
     <ul>
-        {% for post in footer %} <!-- переменная из файла views.py, функция two_view из context, берет список footer и проходится -->
+        {% for post in footer %} <!-- переменная из файла views.py, функция two_view из context, берет список footer и проходится нему -->
             <li>{{ post }}</li> <!-- выводит каждый элемент из списка footer -->
-        {% endfor %} # заканчивается цикл
+        {% endfor %} <!-- заканчивается цикл -->
     </ul>
 
+    <ul>
+        {% for post in other %} <!-- переменная из файла views.py, функция two_view из context, берет список other и проходится по нему -->
+            <li>{{ post.post_title }}: {{ post.post_text }}</li> <!-- из БД выводятся поля post_title и post_text из модуля (таблици) Post -->
+            Comments count: {{ post.comment_set.count }} <br> <!-- из БД выводятся кол-во комментариев у конкретного поста из модуля Comment (Post связан с Comment)-->
+            {% for comment in post.comment_set.all %} <!-- проходится по всем комментариям у поста -->
+                {{ comment.comment_text }} <!-- выводит текст поста -->
+            {% endfor %}<br><br> <!-- заканчивается цикл -->
+        {% endfor %} <!-- заканчивается цикл -->
+    </ul>
 </body>
 </html>
