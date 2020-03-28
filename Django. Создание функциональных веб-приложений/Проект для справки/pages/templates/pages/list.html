@@ -2,9 +2,9 @@
 
 {% extends 'base.html' %} <!-- берет блоки из файла base.html -->
 
-{% block title %}Последние статьи{% endblock %} <!-- берет блок из файла base.html -->
+{% block title %}Последние статьи{% endblock %} <!-- вставляет код из этого блока в файл base.html -->
 
-{% block content %} <!-- берет блок из файла base.html -->
+{% block content %} <!-- вставляет код из этого блока в файл base.html -->
 
     <h1>{{ header }}</h1> <!-- переменная из файла views.py, функция two_view из context -->
 
@@ -27,7 +27,7 @@
     {% if post_list %} <!-- если посты есть БД -->
         Список постов от новых к старым:
         {% for post in post_list %} <!-- пройтись по всем постам -->
-            <ul><li>{{post.post_title}} от {{post.date}}</li></ul> <!-- вывести названия постов -->
+            <ul><li>{{post.post_title}} от {{post.date|date:'d-m-Y'}}</li></ul> <!-- вывести названия постов и их дату в формате ДД-ММ-ГГ-->
         {% endfor %}
 
     {% else %} <!-- если статей нет в БД -->
