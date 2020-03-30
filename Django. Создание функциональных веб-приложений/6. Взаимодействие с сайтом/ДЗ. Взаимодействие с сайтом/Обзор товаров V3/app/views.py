@@ -23,7 +23,7 @@ class ProductView(DetailView):
             request.session['reviewed_products'] = list()
         if product.id not in request.session['reviewed_products']:
             context['form'] = ReviewForm()
-        else:asdf
+        else:
             context['review_exists'] = True
         return render(request, 'app/product_detail.html', context)
 
