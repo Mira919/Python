@@ -19,7 +19,7 @@ class ProductView(DetailView):
         context['product'] = product
         if reviews:
             context['reviews'] = reviews
-        if not request.session['reviewed_products']:
+        if not request.session.get('reviewed_products'):
             request.session['reviewed_products'] = list()
         if product.id not in request.session['reviewed_products']:
             context['form'] = ReviewForm()
@@ -30,7 +30,6 @@ class ProductView(DetailView):
     def post(self, request, **kwargs):
         product = kwargs['pk']
         request.session.modified = True
-        request.session['reviewed_products'].append(product)
         form = ReviewForm(
             {'text': request.POST['text']}
         )
@@ -38,4 +37,5 @@ class ProductView(DetailView):
             filled_form = form.save(commit=False)
             filled_form.product_id = product
             form.save()
+            request.session['reviewed_products'].append(product)
             return redirect('product_detail', pk=product)
