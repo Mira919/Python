@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Список книг</h1>
+
+    <h3>Добавить книгу</h3>
+
+    {% for book in books %} <!-- пройтись по всем книгам -->
+        <p>
+        <div>{{ book.name }} - {{ book.year }}</div> <!-- вывести название и год книги -->
+        <div><a href="{% url 'books-detail' id=book.id %}">Ссылка</a></div> <!-- ссылка на книгу -->
+        <div>Авторы: {% for author in book.authors.all %} <!-- проходится по всем авторам книги -->
+            {{ author.name }} {% endfor %} </div> <!-- вывести имена авторов этой книги -->
+        </p>
+    {% endfor %}
+
+    <form action="{% url 'books-list' %}" method="POST"> <!-- добавить форму -->
+        {% csrf_token %} <!-- обязательный токен -->
+        {{ form.as_p }} <!-- as_p - каждая форма на разных строках -->
+        <button type="submit">Добавить</button> <!-- добавить в форме кнопку -->
+    </form>
+{% endblock %}
