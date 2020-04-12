@@ -72,7 +72,7 @@ def login_view(request):
     return render(request, template, context)
 
 
-def logout_view(request):
+def logout_view(request): # функция выхода пользователя из учетки
     auth.logout(request)
     return redirect('main')
 
@@ -154,7 +154,7 @@ def show_product_view(request, section_slug, product_slug):
     return render(request, template, context)
 
 
-def add_to_cart_view(request, product_id):
+def add_to_cart_view(request, product_id): # функция показа корзины
     if request.user.is_authenticated:
         this_user = request.user
         try:
