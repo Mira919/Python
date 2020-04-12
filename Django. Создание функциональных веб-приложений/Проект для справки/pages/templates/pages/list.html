@@ -1,0 +1,37 @@
+<!-- Этот файл основной -->
+
+{% extends 'base.html' %} <!-- берет блоки из файла base.html -->
+
+{% block title %}Последние статьи{% endblock %} <!-- вставляет код из этого блока в файл base.html -->
+
+{% block content %} <!-- вставляет код из этого блока в файл base.html -->
+
+    <h1>{{ header }}</h1> <!-- переменная из файла views.py, функция two_view из context -->
+
+    <ul>
+        {% for post in footer %} <!-- переменная из файла views.py, функция two_view из context, берет список footer и проходится нему -->
+            <li>{{ post }}</li> <!-- выводит каждый элемент из списка footer -->
+        {% endfor %} <!-- заканчивается цикл -->
+    </ul>
+
+    <ul>
+        {% for post in other %} <!-- переменная из файла views.py, функция two_view из context, берет список other и проходится по нему -->
+            <li>{{ post.post_title }}: {{ post.post_text }}</li> <!-- из БД выводятся поля post_title и post_text из модуля (таблици) Post -->
+            Количество коментариев: {{ post.comment_set.count }} <br> <!-- из БД выводятся кол-во комментариев у конкретного поста из модуля Comment (Post связан с Comment)-->
+            {% for comment in post.comment_set.all %} <!-- проходится по всем комментариям у поста -->
+                <li>{{ comment.comment_text }}</li> <!-- выводит текст коммента -->
+            {% endfor %}<br><br> <!-- заканчивается цикл по комментарием -->
+        {% endfor %} <!-- заканчивается цикл прохождения по постам -->
+    </ul>
+
+    {% if post_list %} <!-- если посты есть БД -->
+        Список постов от новых к старым:
+        {% for post in post_list %} <!-- пройтись по всем постам -->
+            <ul><li>{{post.post_title}} от {{post.date|date:'d-m-Y'}}</li></ul> <!-- вывести названия постов и их дату в формате ДД-ММ-ГГ-->
+        {% endfor %}
+
+    {% else %} <!-- если статей нет в БД -->
+        Статьи не найдены!
+    {% endif %}
+
+{% endblock %}
