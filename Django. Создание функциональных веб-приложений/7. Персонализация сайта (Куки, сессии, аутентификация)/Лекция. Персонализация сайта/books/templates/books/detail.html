@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <div>Название книги: {{ book.name }}</div> <!-- выводит название книги -->
-        <div>Автор(ы): {% for author in book.authors.all %} <!-- проходится по всем авторам книги -->
-            {{ author.name }} <!-- выводит имя автора -->
-        {% endfor %}</div>
-    <div> Вы просматривали эту книгу {{ views_count }} раз</div> <!-- -->
-{% endblock %}

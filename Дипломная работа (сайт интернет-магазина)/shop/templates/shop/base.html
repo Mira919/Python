@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> {% load static %}
 <html lang="en" >
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -44,15 +44,15 @@
 
     </ul>
 
-  {% if request.user.is_authenticated %}
-    <div class="mr-3 text-secondary">Здравсвуйте, {{ user.first_name }}!</div>
+  {% if request.user.is_authenticated %} <!-- проверяет что пользователь идентифицирован, пользователь указал верный пароль и имя пользователя -->
+    <div class="mr-3 text-secondary">Здравстсвуйте, {{ user.first_name }}!</div>
     <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-       href="/cart/">
+       href="/cart/"> <!-- переводит в корзину -->
       Корзина</a>
     <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-       href="{% url 'logout' %}">
+       href="{% url 'logout' %}"> <!-- выходит из учетки пользователя-->
       Выйти</a>
-  {% else %}
+  {% else %} <!-- если пользователь не идентифицирован -->
     <a class="btn btn-outline-success my-2 my-sm-0" role="button"
        href="{% url 'signup' %}">
       Регистрация</a>
