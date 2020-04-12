@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Graduation Work{% endblock %}
+{% block content %}
+<main role="main">
+
+  {% for article in articles %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4">{{ article.name }}</h1>
+        <p>{{ article.text }}</p>
+      </div>
+    </div>
+
+    <div class="container mb-5">
+      <!-- Example row of columns -->
+      <div class="row">
+
+        {% for product in article.products %}
+          <div class="col-md-4">
+            <h2>{{ product.name }}</h2>
+            <a href="{{product.category}}/{{product.slug}}">
+              <img src="{% get_media_prefix %}{{product.image}}" width="180">
+            </a>
+            <form action="/add_to_cart/{{ product.id }}">
+              <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
+            </form>
+          </div>
+        {% endfor %}
+
+      </div>
+    </div> <!-- /container -->
+  {% endfor %}
+
+</main>
+{% endblock %}
