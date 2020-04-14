@@ -1,3 +1,4 @@
+<!-- шаблон показ информации и отзывы о товаре -->
 {% extends "base.html" %}
 {% load static %}
 {% load new_filters %}
@@ -6,26 +7,26 @@
 <main role="main">
   <div class="container mt-3">
 
-    {% if product_data %}
+    {% if product_data %} <!-- если в разделе есть товары -->
 
     <div class="row">
       <div class="col-md-12">
-        <h2>{{ product_data.name }}</h2>
+        <h2>{{ product_data.name }}</h2> <!-- название товара -->
 
         <img src="{% get_media_prefix %}{{ product_data.image }}" width="120">
 
-        <p>{{ product_data.description }}</p>
-        <p>Стоимость: <span class="font-weight-bold">{{ product_data.price }} руб.</span></p>
-        <form action="/add_to_cart/{{ product_data.id }}">
+        <p>{{ product_data.description }}</p> <!-- описание товара -->
+        <p>Стоимость: <span class="font-weight-bold">{{ product_data.price }} руб.</span></p> <!-- цена товара -->
+        <form action="/add_to_cart/{{ product_data.id }}"> <!-- добавить в корзину -->
           <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
         </form>
       </div>
     </div>
     <hr>
 
-    {% for review in reviews %}
-      {{ review.rating|stars_rating }} <span>{{ review.author }}</span>
-      <p> {{ review.text }}</p>
+    {% for review in reviews %} <!-- пройтись по всем отзывам у товара -->
+      {{ review.rating|stars_rating }} <span>{{ review.author }}</span> <!-- вывести звезды -->
+      <p> {{ review.text }}</p> <!-- вывести текст у отзыва -->
     {% endfor %}
 
     <hr>
@@ -33,17 +34,17 @@
     <div class="row">
       <div class="col-lg-6 col-md-8 col-sm-12">
         <h4>Оставьте отзыв:</h4>
-        <form action="" method="post">
-          {% csrf_token %}
+        <form action="" method="post"> <!-- форма отзывов -->
+          {% csrf_token %} <!-- обязательный токен -->
           <div class="form-group">
             <label for="{{ form.name.id_for_label }}">{{ form.name.label_tag }}</label>
-            {{ form.name }}
+            {{ form.name }} <!-- поле Имя -->
           </div>
           <div class="form-group">
             <label for="{{ form.description.id_for_label }}">{{ form.description.label_tag }}</label>
-            {{ form.description }}
+            {{ form.description }} <!-- поле Описание -->
           </div>
-          {% for mark in form.mark %}
+          {% for mark in form.mark %} <!-- поле оценка, вывести цифры от 1 до 5 -->
             <div class="form-check">
               {{ mark.tag }}
               <label class="form-check-label" for="{{ mark.id_for_label }}">

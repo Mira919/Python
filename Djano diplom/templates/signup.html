@@ -1,3 +1,5 @@
+<!-- шаблон для регистрации -->
+
 <!DOCTYPE html>{% load static %}
 <html lang="en">
 <head>
@@ -13,15 +15,19 @@
 
 
 <form class="form-signin" method="POST">
-  {% csrf_token %}
+  {% csrf_token %} <!-- обязательный csrf токен -->
   <input type="hidden" name="next" value="">
   <img class="mb-4" src="{% static 'logo.svg' %}" alt="" width="72" height="72">
   <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
 
-  {% for field in form %}
-    <label for="{{ field.id_for_label }}" class="sr-only">{{ field.label_tag }}</label>
-    {{ field }}
+  {% for field in form %} <!-- для каждого поля в форме -->
+<!--    <label for="{{ field.id_for_label }}" class="sr-only">{{ field.label_tag }}</label>-->
+    {{ field }} <!-- вывести поле -->
   {% endfor %}
+
+  {% if msg %} <!-- если msg = True -->
+  <p class="text-danger">{{ msg }}</p> <!-- вывести сообщение -->
+  {% endif %}
 
 
   <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>

@@ -4,7 +4,7 @@ register = template.Library()
 
 
 @register.filter
-def stars_rating(num: str) -> str:
+def stars_rating(num: str) -> str: # фильтр звезд для отзыва
     stars = ''
     if num:
         if num == 1:

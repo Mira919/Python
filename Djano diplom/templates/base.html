@@ -48,24 +48,24 @@
     {% if request.user.is_authenticated %} <!-- проверяет что пользователь идентифицирован, пользователь указал верный пароль и имя пользователя -->
       <div class="mr-3 text-secondary">Здравсвуйте, {{ user.first_name }}!</div>
       <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-         href="/cart/"> <!-- переводит в корзину -->
+         href="/cart/"> <!-- переводит на страницу корзины -->
         Корзина</a>
       <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-         href="{% url 'logout' %}"> <!-- выходит из учетки пользователя-->
+         href="{% url 'logout' %}"> <!-- выходит из учетки пользователя, logout из urls.py, атрибут name -->
         Выйти</a>
     {% else %} <!-- если пользователь не идентифицирован -->
       <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-         href="{% url 'signup' %}">
+         href="{% url 'signup' %}"> <!-- переводит на страницу регистрации, signup из urls.py, атрибут name -->
         Регистрация</a>
       <a class="btn btn-outline-success my-2 my-sm-0" role="button"
-         href="{% url 'login' %}">
+         href="{% url 'login' %}"> <!-- переводит на страницу входа в учетку, login из urls.py, атрибут name -->
         Войти</a>
     {% endif %}
 
   </div>
 </nav>
 
-{% block content %}{% endblock %} <!-- сюда будет подставляться основной контент из другого шаблона-->
+{% block content %}{% endblock %} <!-- сюда будет подставляться основной контент страницы из другого шаблона-->
 
 <hr>
 <footer class="container"> <!-- футер -->

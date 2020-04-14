@@ -21,13 +21,13 @@ from django.urls import path
 from app import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.main_view, name='main'),
-    path('login/', views.login_view, name='login'),
+    path('admin/', admin.site.urls), # переводит на страницу админа
+    path('', views.main_view, name='main'), # переводит на главную страницу
+    path('login/', views.login_view, name='login'), # переводит на страницу входа в учетку
     path('logout/', views.logout_view, name='logout'), # выходит из учетки пользователя
-    path('signup/', views.signup_view, name='signup'),
-    path('add_to_cart/<product_id>/', views.add_to_cart_view, name='add_to_cart'),
+    path('signup/', views.signup_view, name='signup'), # переводит на регистрацию
+    path('add_to_cart/<product_id>/', views.add_to_cart_view, name='add_to_cart'), # добавление товара в корзину
     path('cart/', views.show_cart_view, name='cart'), # переводит в корзину
-    path('<section>/', views.show_section_view, name='section'),
-    path('<section_slug>/<product_slug>/', views.show_product_view, name='product'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('<section>/', views.show_section_view, name='section'), # показ какого - либо раздела и пагинация раздела
+    path('<section_slug>/<product_slug>/', views.show_product_view, name='product'), # показ информации и отзывы о товаре
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # подключаем статику
