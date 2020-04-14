@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9ebeaaa-523f-48a2-aea8-78642ccb4f2a" name="Default Changelist" comment="" />
+    <list default="true" id="a9ebeaaa-523f-48a2-aea8-78642ccb4f2a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/templates/app/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/app/phone.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/phone.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/app/smartphones.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/smartphones.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Описание файлов.md" beforeDir="false" afterPath="$PROJECT_DIR$/Описание файлов.md" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
