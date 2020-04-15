@@ -45,7 +45,7 @@ class Article(models.Model): # таблица Статей
         verbose_name_plural = 'Статьи'
 
     def __str__(self): # для красивого вывода
-        return str(self.name) + ' ' + str(self.date_created)
+        return str(self.name)
 
 
 class Review(models.Model): # таблица Отзывов

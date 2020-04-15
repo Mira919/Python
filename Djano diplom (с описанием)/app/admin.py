@@ -4,9 +4,9 @@ from django.contrib import admin
 from .models import Section, Product, Article, Review, ReviewProductRelation, Order, OrderProductRelation
 
 
-@admin.register(ReviewProductRelation) # добавляем в админку промежуточную таблицу отзыв - товар
-class ReviewProductRelationAdmin(admin.ModelAdmin):
-    pass
+# @admin.register(ReviewProductRelation) # добавляем в админку промежуточную таблицу отзыв - товар
+# class ReviewProductRelationAdmin(admin.ModelAdmin):
+#     pass
 
 
 class ReviewProductRelationInline(admin.TabularInline): # обьяснение ниже

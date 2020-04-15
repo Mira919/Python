@@ -17,7 +17,7 @@
 <form class="form-signin" method="POST">
   {% csrf_token %} <!-- обязательный csrf токен -->
   <input type="hidden" name="next" value="">
-  <img class="mb-4" src="{% static 'logo.svg' %}" alt="" width="72" height="72">
+  <img class="mb-4" src="../media/logo.svg" alt="" width="72" height="72">
   <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
 
   {% for field in form %} <!-- для каждого поля в форме -->
@@ -31,7 +31,7 @@
 
 
   <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
-  <p class="mt-5 mb-3 text-muted">© Просто магазин 2018</p>
+  <p class="mt-5 mb-3 text-muted">© Просто магазин 2020</p>
 </form>
 
 <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>

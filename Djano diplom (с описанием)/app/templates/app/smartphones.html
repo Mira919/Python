@@ -15,15 +15,21 @@
           Тут пока ничего нет!
         </div>
       {% else %} <!-- если раздел не пуст -->
-
+        {% if not request.user.is_authenticated %} <!-- если пользователь не авторизован -->
+          Чтобы оставить или просмотреть отзывы о товаре нужно авторизоваться!<br><br>
+        {% endif %}
           {% if product_list %} <!-- если список товаров не пуст -->
             <div class="row">
             {% for product in product_list %} <!-- пройтись по каждому товару -->
               <div class="col-md-4">
                 <h2>{{ product.name }}</h2> <!-- вывести название товара -->
-                <a href="{{ product.slug }}/">
-                  <img src="{% get_media_prefix %}{{ product.image }}" width="180">
-                </a>
+                <img src="{% get_media_prefix %}{{ product.image }}" width="180">
+                {% if request.user.is_authenticated %} <!-- если пользователь авторизован, то ему можно перейти на информацию и отзывы  -->
+                  <a href="{{ product.slug }}/">
+                    <input type="submit" class="btn btn-secondary" value="Информация и отзывы »">
+                  </a>
+                  <br><br>
+                {% endif %}
                 <form action="/add_to_cart/{{ product.id }}">
                   <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
                 </form>
