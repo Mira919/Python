@@ -71,7 +71,7 @@ python manage.py loaddata db.json
 3. Запустите тестовый сервер
 python manage.py runserver
 
-Тестовый суперпользователь:
+Данные админа:
 логин: admin
 пароль: admin
 почта: admin@admin.admin
