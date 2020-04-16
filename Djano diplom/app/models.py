@@ -6,7 +6,7 @@ from django.contrib.auth.models import User # импортируем автор�
 
 class Section(models.Model): # таблица Разделов
     name = models.CharField(max_length=50, verbose_name='Название')
-    slug = models.CharField(null=True, blank=True, max_length=80, verbose_name='Алиас')
+    slug = models.CharField(null=True, blank=True, max_length=80, verbose_name='Название на английском (для ссылки)')
 
     class Meta: # как будут отображаться в админке
         verbose_name = 'Раздел'
