@@ -3,17 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a9ebeaaa-523f-48a2-aea8-78642ccb4f2a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/app/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/app/phone.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/phone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/app/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/app/smartphones.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/smartphones.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Djano diplom/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/online_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/online_store/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Описание файлов.md" beforeDir="false" afterPath="$PROJECT_DIR$/Описание файлов.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +21,7 @@
   <component name="ProjectId" id="1aRoEBbOeDIr2WaPd3YbxeYrIKh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Djano diplom" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
