@@ -1,3 +1,4 @@
+# берет модели (таблицы), информацию из бд и предоставляет ее в JSON виде
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
@@ -6,7 +7,7 @@ from .models import Store, Category, Product, PriceItem, Price, Parameter, Produ
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = User # используем модель пользователей
         fields = ('username', 'email', 'password')
         extra_kwargs = {
             'username': {'write_only': True},
@@ -21,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class StoreSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Store
+        model = Store # используем модель магазинов
         fields = ('id', 'name', 'user')
         extra_kwargs = {
             'user': {'write_only': True},
@@ -30,19 +31,19 @@ class StoreSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
+        model = Category # используем модель категорий
         fields = ('id', 'name')
 
 
 class ParameterSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Parameter
+        model = Parameter # используем модель характеристик
         fields = ('id', 'name')
 
 
 class ProductParameterPriceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ProductParameter
+        model = ProductParameter # используем модель характеристики товара
         fields = ('parameter', 'value')
 
     parameter = serializers.StringRelatedField()
@@ -50,13 +51,13 @@ class ProductParameterPriceSerializer(serializers.ModelSerializer):
 
 class ProductParameterSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ProductParameter
+        model = ProductParameter # используем модель характеристики товара
         fields = ('product', 'parameter', 'value')
 
 
 class ProductPriceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Product
+        model = Product # используем модель товаров
         fields = ('id', 'name', 'category', 'parameters')
 
     category = CategorySerializer()
@@ -70,13 +71,13 @@ class ProductPriceSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Product
+        model = Product # используем модель товаров
         fields = ('id', 'name', 'category')
 
 
 class PriceItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PriceItem
+        model = PriceItem # используем модель позиции прайс листа товара
         fields = ('product', 'quantity', 'cost')
 
     product = ProductPriceSerializer()
